@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main %}
+    <div id="create-word">
+        <button data-hx-get="{% url 'word-create' %}" data-hx-swap="outerHTML">Create</button>
+    </div>
+
+    <div id="wordlist">
+        {% for w in words %}
+            {{ w.id }} | {{ w.word }} |
+            <button>Edit</button><br>
+        {% empty %}
+            No word!
+        {% endfor %}
+    </div>
+{% endblock main %}
