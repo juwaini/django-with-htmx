@@ -2,20 +2,14 @@
 {% load static %}
 
 {% block main %}
-<form hx-put="/contact/1" hx-target="this" hx-swap="outerHTML">
-  <div>
-    <label>First Name</label>
-    <input type="text" name="firstName" value="Joe">
-  </div>
-  <div class="form-group">
-    <label>Last Name</label>
-    <input type="text" name="lastName" value="Blow">
-  </div>
-  <div class="form-group">
-    <label>Email Address</label>
-    <input type="email" name="email" value="joe@blow.com">
-  </div>
-  <button class="btn">Submit</button>
-  <button class="btn" hx-get="/contact/1">Cancel</button>
-</form>
+    <div id="create-button">
+        <form data-hx-post="{% url 'word-edit' pk=object.pk %}" data-hx-target="this" hx-swap="outerHTML">
+            {{ form.as_p }}
+            <button class="btn">Submit</button>
+            <button class="btn" data-hx-get="{% url 'get-default-button' %}" data-hx-target="#create-button"
+                    data-hx-swap="innerHTML">
+                Cancel
+            </button>
+        </form>
+    </div>
 {% endblock main %}

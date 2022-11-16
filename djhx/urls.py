@@ -16,16 +16,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from example.views import IndexView, ClickToEditView, ClickEditView, WordCreateView, ClickDemo, clicked, WordDemoView
+from example.views import IndexView, WordEditView, WordCreateView, ClickDemo, clicked, WordDemoView, \
+    DefaultButtonView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', IndexView.as_view(), name='index'),
 
+    path('get-default-button', DefaultButtonView.as_view(), name='get-default-button'),
     path('word-demo', WordDemoView.as_view(), name='word-demo'),
     path('word-create', WordCreateView.as_view(), name='word-create'),
-    path('click-to-edit', ClickToEditView.as_view(), name='click-to-edit'),
-    path('click-edit', ClickEditView.as_view(), name='click-edit'),
+    path('word-edit/<int:pk>', WordEditView.as_view(), name='word-edit'),
+
+    # path('click-to-edit', ClickToEditView.as_view(), name='click-to-edit'),
 
     path('click-demo', ClickDemo.as_view(), name='click-demo'),
     path('clicked', clicked, name='clicked'),

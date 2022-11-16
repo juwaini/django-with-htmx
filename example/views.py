@@ -1,5 +1,6 @@
 from .models import Word
 from django.views.generic import TemplateView, ListView, CreateView
+from django.views.generic.edit import UpdateView
 from django.shortcuts import render
 
 
@@ -17,6 +18,10 @@ class WordDemoView(TemplateView):
         return context
 
 
+class DefaultButtonView(TemplateView):
+    template_name = 'default-create-button.html'
+
+
 class WordCreateView(CreateView):
     template_name = 'word-create.html'
 
@@ -24,13 +29,18 @@ class WordCreateView(CreateView):
 
     fields = '__all__'
 
+    success_url = '/get-default-button'
+
 
 class ClickToEditView(TemplateView):
     template_name = 'click-to-edit.html'
 
 
-class ClickEditView(TemplateView):
+class WordEditView(UpdateView):
+    model = Word
+    fields = '__all__'
     template_name = 'click-edit.html'
+    success_url = '/get-default-button'
 
 
 class ClickDemo(TemplateView):

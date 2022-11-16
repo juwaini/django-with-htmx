@@ -2,14 +2,13 @@
 {% load static %}
 
 {% block main %}
-    <div id="create-word">
-        <button data-hx-get="{% url 'word-create' %}" data-hx-swap="outerHTML">Create</button>
-    </div>
+    {% include 'default-create-button.html' %}
 
+    <hr>
     <div id="wordlist">
         {% for w in words %}
             {{ w.id }} | {{ w.word }} |
-            <button>Edit</button><br>
+            <button data-hx-get="{% url 'word-edit' pk=w.pk %}" data-hx-target="#create-word">Edit</button><br>
         {% empty %}
             No word!
         {% endfor %}
