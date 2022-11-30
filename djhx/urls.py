@@ -32,4 +32,6 @@ urlpatterns = [
 
     path('click-demo', ClickDemo.as_view(), name='click-demo'),
     path('clicked', clicked, name='clicked'),
+
+    # article
 ]

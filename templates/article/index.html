@@ -1,0 +1,23 @@
+{% extends 'example/base.html' %}
+
+{% load static %}
+
+{% block main %}
+    <nav>
+        <h2>HTMX Blog</h2>
+        <div class="navbar">
+            {% if user.is_authenticated %}
+                <a class="nav-item nav-link" href="{#% url 'logout' %#}">
+                    <button class="btn btn-link">Logout</button>
+                </a>
+            {% else %}
+                <a class="nav-item nav-link" href="{#% url 'login' %#}">
+                    <button class="btn btn-link">Login</button>
+                </a>
+                <a class="nav-item nav-link" href="{#% url 'register' %#}">
+                    <button class="btn btn-link">Register</button>
+                </a>
+            {% endif %}
+        </div>
+    </nav>
+{% endblock %}

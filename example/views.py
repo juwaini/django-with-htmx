@@ -5,12 +5,12 @@ from django.shortcuts import render
 
 
 class IndexView(ListView):
-    template_name = 'index.html'
+    template_name = 'example/index.html'
     model = Word
 
 
 class WordDemoView(TemplateView):
-    template_name = 'word-demo.html'
+    template_name = 'example/word-demo.html'
 
     def get_context_data(self, **kwargs):
         context = super(WordDemoView, self).get_context_data(**kwargs)
@@ -19,11 +19,11 @@ class WordDemoView(TemplateView):
 
 
 class DefaultButtonView(TemplateView):
-    template_name = 'default-create-button.html'
+    template_name = 'example/default-create-button.html'
 
 
 class WordCreateView(CreateView):
-    template_name = 'word-create.html'
+    template_name = 'example/word-create.html'
 
     model = Word
 
@@ -33,19 +33,19 @@ class WordCreateView(CreateView):
 
 
 class ClickToEditView(TemplateView):
-    template_name = 'click-to-edit.html'
+    template_name = 'example/click-to-edit.html'
 
 
 class WordEditView(UpdateView):
     model = Word
     fields = '__all__'
-    template_name = 'click-edit.html'
+    template_name = 'example/click-edit.html'
     success_url = '/get-default-button'
 
 
 class ClickDemo(TemplateView):
-    template_name = 'click-demo.html'
+    template_name = 'example/click-demo.html'
 
 
 def clicked(request):
-    return render(request, template_name='clicked.html')
+    return render(request, template_name='example/clicked.html')
